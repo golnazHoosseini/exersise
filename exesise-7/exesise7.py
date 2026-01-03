@@ -25,6 +25,7 @@ class PhoneBook :
                 writer = csv.writer(file)
                 writer.writerow(["name" , "phone"])
                 for c in self.contacts:
+
                     writer.writerow([c.name , c._phone])
 
             print("save successfully :))))))")
@@ -38,10 +39,10 @@ class PhoneBook :
                 reader = csv.reader(file)
                 next(reader)
                 for row in reader:
-        try:
-            self.contacts.append(Contact(row[0] , row[1]))
-        except(ValueError , IndexError):
-            print(f"in row {row} for not valid option is ignore")
+                     try:
+                         self.contacts.append(Contact(row[0] , row[1]))
+                     except(ValueError , IndexError):
+                         print(f"in row {row} for not valid option is ignore")
         except FileNotFoundError:
             print("create the new book")
 
@@ -49,10 +50,10 @@ my_book = PhoneBook()
 my_book.load_from_csv("contacts.csv")
 
 while True :
-print("--------- phone book ---------")
-print("1- add pearson")
-print("2- show all ")
-print("3- save and exit ")
+    print("--------- phone book ---------")
+    print("1- add pearson")
+    print("2- show all ")
+    print("3- save and exit ")
 
     try :
         number = int(input("what do you want to do ??? "))
@@ -64,7 +65,7 @@ print("3- save and exit ")
             try:
                 my_book.addContact(name , phone)
                 print("contact is successfully add")
-                except ValueError as e :
+            except ValueError as e :
                 print(f"try again {e}")
 
         elif number == 2:
